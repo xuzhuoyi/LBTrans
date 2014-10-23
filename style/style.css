@@ -1,0 +1,163 @@
+/* QPushButton  */
+QPushButton{
+    padding:0px;
+    border:0px;
+    color:white;
+    border-radius:4px;
+    background:center contain no-repeat url("$AppDir/style/images/blue_normal.png") ;
+}
+
+QPushButton:hover{
+    background:center contain no-repeat url("$AppDir/style/images/blue_hover.png") ;
+}
+
+QPushButton:pressed{
+    background:center contain no-repeat url("$AppDir/style/images/blue_down.png") ;
+}
+
+
+/* QComboBox */
+QComboBox{ 
+    border: 1px solid gray;
+    border-radius: 3px;
+    border-image:url("$AppDir/style/images/combobox_normal.png");
+}
+
+QComboBox:hover{
+    border-image:url("$AppDir/style/images/combobox_hover.png");
+}
+
+QComboBox:drop-down{
+    background-image:url("$AppDir/style/images/inputbtn_normal.png") ;
+    background-position:center ;
+}
+
+QComboBox QAbstractItemView {
+    border: 1px solid #9400D3;
+    selection-background-color: #9400D3;
+}
+
+
+/* QScrollBar */
+ QScrollBar:vertical {
+     border: 1px solid white;
+     width: 14px;
+     margin: 15px 0 15px 0;
+ }
+ QScrollBar::handle:vertical {
+     background-image:url($AppDir/style/images/scrollbar_bar_normal.png);
+     background-repeat:repeat-x;
+     background-position:center;
+ }
+ QScrollBar::handle:vertical:hover {
+     background-image:url($AppDir/style/images/scrollbar_bar_highlight.png);
+ }
+ QScrollBar::handle:vertical:pressed{
+     background-image:url($AppDir/style/images/scrollbar_bar_down.png);
+ }
+ QScrollBar::add-line:vertical {
+     border: 1px solid white;
+     height: 14px;
+     subcontrol-position: bottom;
+     subcontrol-origin: margin;
+     background-color:white;
+ }
+
+ QScrollBar::sub-line:vertical {
+     border: 1px solid white;
+     height: 14px;
+     background-color:white;
+     subcontrol-position: top;
+     subcontrol-origin: margin;
+ }
+ QScrollBar::up-arrow:vertical {
+     background-image:url($AppDir/style/images/scrollbar_arrowup_normal.png);
+     background-repeat:no-repeat;
+ }
+ QScrollBar::up-arrow:vertical:hover{
+     background-image:url($AppDir/style/images/scrollbar_arrowup_highlight.png);
+     background-repeat:no-repeat;
+ }
+ QScrollBar::up-arrow:vertical:pressed{
+     background-image:url($AppDir/style/images/scrollbar_arrowup_down.png);
+     background-repeat:no-repeat;
+ }
+ 
+ QScrollBar::down-arrow:vertical{
+     background-image:url($AppDir/style/images/scrollbar_arrowdown_normal.png);
+     background-repeat:no-repeat;
+ }
+ QScrollBar::down-arrow:vertical:hover{
+     background-image:url($AppDir/style/images/scrollbar_arrowdown_highlight.png);
+     background-repeat:no-repeat;
+ }
+ QScrollBar::down-arrow:vertical:pressed{
+     background-image:url($AppDir/style/images/scrollbar_arrowdown_down.png);
+     background-repeat:no-repeat;
+ }
+
+ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+     background:none;
+ }
+
+/* QPlainTextEdit */
+QPlainTextEdit{
+    border:1px solid white;
+}
+QPlainTextEdit:hover{
+    border-color:#9400D3;
+}
+
+/* QMainWindow */
+QMainWindow, QDialog{
+    background-image:url($AppDir/style/images/aio.png);
+    background-position:center;
+}
+
+QStatusBar{
+    background-image:url($AppDir/style/images/aio.png);
+    background-position:top center;
+}
+QStatusBar QLabel{
+}
+
+QMainWindow #label_main_top{
+	background-image:url($AppDir/style/images/banner.png);
+}
+
+/* QToolButton */
+QToolButton{
+    border-radius:4px;
+}
+QToolButton#pinWindow{
+    background-image:url($AppDir/style/images/pin_normal.png);
+    background-repeat:no-repeat;
+    background-position:center;
+}
+QToolButton#pinWindow:hover{
+    background-image:url($AppDir/style/images/pin_highlight.png);
+}
+
+QToolButton#updateStyle{
+    background-image:url($AppDir/style/images/update_normal.png);
+    background-repeat:no-repeat;
+    background-position:center;
+}
+QToolButton#updateStyle:hover{
+    background-image:url($AppDir/style/images/update_highlight.png);
+}
+QToolButton#updateStyle:pressed{
+    background-position:top;
+}
+
+QToolButton#about{
+    background-image:url($AppDir/style/images/about_normal.png);
+    background-repeat:no-repeat;
+    background-position:center;
+}
+QToolButton#about:hover{
+    background-image:url($AppDir/style/images/about_highlight.png);
+}
+QToolButton#about:pressed{
+    background-position:top;
+}
