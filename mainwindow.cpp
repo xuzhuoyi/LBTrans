@@ -197,6 +197,7 @@ void MainWindow::updateStyle()
 俄罗斯语 	ru 	    葡萄牙语 	pt
 粤语 	yue 	    文言文 	wyw
 白话文 	zh 	    自动检测 	auto
+德语    de         意大利语   it
 */
 void MainWindow::initComboBox(QComboBox *comboBox)
 {
@@ -210,6 +211,9 @@ void MainWindow::initComboBox(QComboBox *comboBox)
     comboBox->addItem(tr("中文 -> 韩文"), QStringList() << "zh" << "kor");
     comboBox->addItem(tr("白话文-> 文言文"), QStringList() << "zh" << "wyw");
     comboBox->addItem(tr("文言文 -> 白话文"), QStringList() << "wyw" << "zh");
+    comboBox->addItem(tr("阿拉伯语 -> 英语"), QStringList() << "ara" << "en");
+    comboBox->addItem(tr("阿拉伯语 -> 中文"), QStringList() << "ara" << "zh");
+    comboBox->addItem(tr("日文 -> 中文"), QStringList() << "jp" << "zh");
 
     auto currentIndexChanged = static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged);
     connect(comboBox, currentIndexChanged, [=](int index){
