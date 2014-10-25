@@ -10,6 +10,7 @@ CBaiduTranslater::CBaiduTranslater(QObject *parent, QString API_Key, QString url
      m_API_Key(API_Key), m_from("auto"), m_to("auto"), m_q(""),
      m_networkAccessManager(new QNetworkAccessManager(this))
 {
+
 }
 
 QString CBaiduTranslater::API_Key() const
@@ -45,6 +46,19 @@ QString CBaiduTranslater::q() const
     return m_q;
 }
 
+QString CBaiduTranslater::returnResult()
+{
+    QString destText;
+    QVectorIterator<QPair<QString, QString> > iter(tmpResult.m_trans_result);
+    while(iter.hasNext())
+    {
+        QPair<QString, QString> pair = iter.next();
+        destText += pair.second + "\n";
+    }
+    qDebug(destText.toUtf8().data());
+    return destText;
+}
+
 void CBaiduTranslater::setQ(const QString &q)
 {
     m_q = q;
@@ -62,8 +76,8 @@ void CBaiduTranslater::translate()
 
 void CBaiduTranslater::translate(const QString &src, const QString from, const QString to)
 {
-    if (m_networkAccessManager == nullptr)
-        return;
+    //if (m_networkAccessManager == nullptr)
+        //return;
 
     /* create query url */
     QUrl url(m_url);
@@ -83,8 +97,12 @@ void CBaiduTranslater::translate(const QString &src, const QString from, const Q
     /* return data */
     connect(reply, &QNetworkReply::readyRead, [=]{
         QByteArray data = reply->readAll();
+        //qDebug(data);
         CBaiduTranslateResult result = decodeJsonData(data);
+
         emit finished(result);
+        tmpResult = result;
+        returnResult();
         reply->close();
     });
 

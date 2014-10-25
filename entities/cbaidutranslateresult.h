@@ -21,7 +21,7 @@ public:
     /* translate successfully */
     QString m_from;
     QString m_to;
-    QVector<QPair<QString, QString>> m_trans_result;
+    QVector<QPair<QString, QString> > m_trans_result;
 
     /* translate failed */
     ErrorCode m_error_code;
