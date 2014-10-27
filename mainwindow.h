@@ -30,7 +30,7 @@ private slots:
     void translate(const QString &srcText, const QString &from, const QString &to);
     void showResult(CBaiduTranslateResult result);
     void togglePinWindow();
-    void updateStyle();
+    //void updateStyle();
 
     void on_btnClear_clicked();
 

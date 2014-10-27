@@ -10,7 +10,7 @@ CBaiduTranslater::CBaiduTranslater(QObject *parent, QString API_Key, QString url
      m_API_Key(API_Key), m_from("auto"), m_to("auto"), m_q(""),
      m_networkAccessManager(new QNetworkAccessManager(this))
 {
-
+    isCli = false;
 }
 
 QString CBaiduTranslater::API_Key() const
@@ -56,6 +56,7 @@ QString CBaiduTranslater::returnResult()
         destText += pair.second + "\n";
     }
     qDebug(destText.toUtf8().data());
+    exit(0);
     return destText;
 }
 
@@ -67,6 +68,12 @@ void CBaiduTranslater::setQ(const QString &q)
 void CBaiduTranslater::translate(const QString &src)
 {
     translate(src, m_from, m_to);
+}
+
+void CBaiduTranslater::translateCli(const QString &src)
+{
+    isCli = true;
+    translate(src,"auto","auto");
 }
 
 void CBaiduTranslater::translate()
@@ -101,8 +108,13 @@ void CBaiduTranslater::translate(const QString &src, const QString from, const Q
         CBaiduTranslateResult result = decodeJsonData(data);
 
         emit finished(result);
-        tmpResult = result;
-        returnResult();
+
+        if (isCli)
+        {
+            tmpResult = result;
+            returnResult();
+        }
+
         reply->close();
     });
 

@@ -172,21 +172,21 @@ void MainWindow::togglePinWindow()
     this->show();
 
 }
-
-void MainWindow::updateStyle()
+/*
+ void MainWindow::updateStyle()
 {
     QString appDir = QApplication::applicationDirPath() + QDir::separator();
-    /* load style sheet. */
+    // load style sheet.
     QFile file(appDir + "style/style.css");
     if (file.open(QIODevice::ReadOnly))
-    {
+   {
         QString style(file.readAll());
-        style.replace("$AppDir", appDir);
-//        qDebug() << style;
+       style.replace("$AppDir", appDir);
+        qDebug() << style;
         qApp->setStyleSheet(style);
         file.close();
-    }
-}
+   }
+} */
 
 
 /*

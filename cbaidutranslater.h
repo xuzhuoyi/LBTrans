@@ -32,6 +32,7 @@ public:
     void translate();
     void translate(const QString &src);
     void translate(const QString &src, const QString from, const QString to);
+    void translateCli(const QString &src);
 
     QString returnResult();
     CBaiduTranslateResult tmpResult;
@@ -46,7 +47,7 @@ private:
     QString m_to;           // destination lauguage
     QString m_client_id;    // baidu API key
     QString m_q;            // query content
-
+    bool isCli;
 
     QNetworkAccessManager *m_networkAccessManager;
 
