@@ -46,7 +46,7 @@ private:
     QToolButton *m_updateStyle;
     QToolButton *m_about;
 
-    void initComboBox(QComboBox *comboBox);
+    void initComboBox(QComboBox *comboBox, int comboBoxType);
     void showAboutDialog();
 };
 

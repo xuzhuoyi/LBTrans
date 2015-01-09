@@ -54,7 +54,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
     /* initialize translation direction */
-    initComboBox(ui->comboBox);
+    initComboBox(ui->comboBox, 0);
+    initComboBox(ui->comboBoxObject, 1);
 
     // Set baidu translate seveice API key
     m_baiduTranslater->setAPI_Key("YaGqITH4r1i95Xp8izAhrxwT");
@@ -199,27 +200,25 @@ void MainWindow::togglePinWindow()
 白话文 	zh 	    自动检测 	auto
 德语    de         意大利语   it
 */
-void MainWindow::initComboBox(QComboBox *comboBox)
+void MainWindow::initComboBox(QComboBox *comboBox, int comboBoxType)
 {
     if (comboBox == nullptr)
         return;
 
     comboBox->addItem(tr("自动识别"), QStringList() << "auto" << "auto");
-    comboBox->addItem(tr("英文 -> 中文"), QStringList() << "en" << "zh");
-    comboBox->addItem(tr("中文 -> 英语"), QStringList() << "zh" << "en");
-    comboBox->addItem(tr("中文 -> 日文"), QStringList() << "zh" << "jp");
-    comboBox->addItem(tr("中文 -> 韩文"), QStringList() << "zh" << "kor");
-    comboBox->addItem(tr("白话文-> 文言文"), QStringList() << "zh" << "wyw");
-    comboBox->addItem(tr("文言文 -> 白话文"), QStringList() << "wyw" << "zh");
-    comboBox->addItem(tr("阿拉伯语 -> 英语"), QStringList() << "ara" << "en");
-    comboBox->addItem(tr("阿拉伯语 -> 中文"), QStringList() << "ara" << "zh");
-    comboBox->addItem(tr("日文 -> 中文"), QStringList() << "jp" << "zh");
+    comboBox->addItem(tr("英文"), QStringList() << "en" << "en");
+    comboBox->addItem(tr("中文"), QStringList() << "zh" << "zh");
+    comboBox->addItem(tr("文言文"), QStringList() << "wyw" << "wyw");
+    comboBox->addItem(tr("阿拉伯语"), QStringList() << "ara" << "ara");
+    comboBox->addItem(tr("日文"), QStringList() << "jp" << "jp");
 
     auto currentIndexChanged = static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged);
     connect(comboBox, currentIndexChanged, [=](int index){
         QStringList strList = comboBox->itemData(index, Qt::UserRole).toStringList();
-        m_from = strList[0];
-        m_to = strList[1];
+        if (comboBoxType == 0)
+            m_from = strList[0];
+        else
+            m_to = strList[1];
     });
 }
 
